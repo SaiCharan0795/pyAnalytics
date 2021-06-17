@@ -22,7 +22,8 @@ x3.shape
 
 #Print those values
 x0; x1;x2;x3
-
+x0
+print(x0)
 #%%%
 #0-Dim
 x0[0] ; x0[1]  #error
@@ -38,8 +39,10 @@ x2 = np.random.randint( 10, size=(3,4)) ;x2
 x2[0]
 x2[0,1]  #1st row, 2nd col
 x2[0:,0:]  #all
+x2[1:,1:]
 x2  #full array
 x2[0:1,0:]  #1st row
+x2[1:2,0:]
 x2[:1, :]
 x2[0:,0:1]  #1st col
 x2[:, :1]
