@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 #Daily Practise File
 #-----------------------------
 #Data Structures
@@ -169,6 +162,7 @@ numpy.array([list1])
 
 import numpy as np #np is alias
 np1 = np.arange(1,10)
+
 np1
 
 x=np.arange(start=1,stop=1000000,step=2)
@@ -233,6 +227,7 @@ iris = sns.load_dataset("iris")
 iris.head()
 iris.tail()
 df1.groupby('gender').size()
+iris.groupby('species').size()
 iris.groupby('species').size().plot(kind='bar')
 sns.pairplot(iris)  #relationship diagrams
 
@@ -254,6 +249,7 @@ mtcars.data.head()
 #Load from Excel/ CSV and export to
 data = mtcars.data
 data.head(6)
+
 type(data)
 data.to_csv('mtcars.csv')
 data.to_excel('mtcarsExcel.xlsx','sheet3', header=False)
