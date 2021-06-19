@@ -36,7 +36,7 @@ mtcars.values
 
 #%%% access DF
 mtcarsDF[0:5]
-mtcarsDF[0:5,0:3]
+mtcarsDF[0:5,0:3] #error
 
 #single value: at
 mtcarsDF.at['Mazda RX4', 'mpg']
@@ -44,13 +44,13 @@ mtcarsDF.at['Mazda RX4', 'mpg']
 
 #single values : iat : integer
 mtcarsDF.iat[0,0]
-mtcarsDF.iat[0,0:5]
+mtcarsDF.iat[0,0:5] #error
 
 #set of values : loc : index values
 mtcarsDF.index
-mtcarsDF.loc[['Mazda 4X4']]
-mtcarsDF.loc['Mazda 4X4', ['mpg']]
-mtcarsDF.loc[7:9]
+mtcarsDF.loc[['Mazda 4X4']] #error
+mtcarsDF.loc['Mazda 4X4', ['mpg']] #error
+mtcarsDF.loc[7:9] #error
 
 #iloc
 mtcarsDF
@@ -85,7 +85,7 @@ mtcarsDF.filter(regex = '[gGa]')  #small or big G or a in the column name
 mtcarsDF.filter(items=['gear','am'])
 mtcarsDF.filter(regex='Toyota', axis=0)  #rownames axis=0
 mtcarsDF.filter(regex='am', axis=1)  #colnames axis=1
-
+mtcarsDF
 #%%statistics 0- column, 1-row
 mtcarsDF.mean(axis=0)
 mtcarsDF.mean(axis=1)
@@ -130,7 +130,7 @@ mtcarsDF.query('gear==4')
 #if a string
 mtcarsDF.query('gear=="4"')
 mtcarsDF.query('gear==4 & am==0')
-mtcarsDF.query('gear in [3,7]')
+mtcarsDF.query('gear in [3,7]') #doubt
 
 
 
@@ -140,7 +140,7 @@ mtcarsDF
 #stats
 mtcarsDF['gear'].count()
 mtcarsDF['wt'].max()
-mtcarsDF['wt'][mtcarsDF['gear'] == 4]
+mtcarsDF['hp'][mtcarsDF['gear'] == 4]
 mtcarsDF['wt'][mtcarsDF['gear'] == 4].sum()  #sum of wt of 4 gear cars
 mtcarsDF['gear'].value_counts()
 mtcarsDF[mtcars['hp'] > 150].gear.value_counts()
@@ -154,14 +154,14 @@ mtcarsDF.describe()  # default only numeric
 mtcarsDF.sort_values(by='gear', axis=0)
 mtcarsDF.sort_values(by=['gear', 'mpg']).head(n=10)
 mtcarsDF.sort_values(by=['cyl','mpg'], ascending=[True, False]).head(n=20)
-
+#doubt
 
 
 
 #%%% groupby
 mtcarsDF.describe()
-mtcarsDF.groupby('gear')
-mtcarsDF.groupby(['gear'])
+mtcarsDF.groupby('gear') #doubt
+mtcarsDF.groupby(['gear']) #doubt
 mtcarsDF.groupby(['gear']).groups.keys()
 mtcarsDF.groupby(['gear']).groups[3] #cars of group with gear 3
 mtcarsDF.groupby('carb').first()  #first item of each group
@@ -185,8 +185,8 @@ mtcarsDF.groupby('gear')['mpg','wt'].agg('mean')
 mtcarsDF.groupby('gear')['mpg','wt'].agg(['mean','max'])
 mtcarsDF.groupby('gear').agg([np.mean, np.sum])  #all columns, np is faster, numeric values
 mtcarsDF.groupby('gear')['mpg','wt'].agg([np.mean, np.sum, 'count'])
-mtcarsDF.groupby('gear')['mpg'].agg([np.mean, np.sum, 'count']).rename(columns={'meanMPG')
-
+mtcarsDF.groupby('gear')['mpg'].agg([np.mean, np.sum, 'count']).rename(columns={'meanMPG'})
+#error
 
 
 mtcarsDF.groupby('gear').agg(meanMPG = pd.NamedAgg(column='mpg', aggfunc='mean'))
@@ -216,7 +216,7 @@ import pandas as pd
 pd.crosstab(mtcarsDF.cyl, mtcarsDF.gear)
 
 #pivot
-pd.crosstab(mtcarsDF.cyl, mtcarsDF.gear, margins=True, margins_name='Total')
+pd.crosstab(mtcarsDF.cyl, mtcarsDF.gear, margins=True, margins_name='Total')#doubt
 pd.crosstab(mtcarsDF.cyl, [mtcarsDF.gear, mtcarsDF.am])
 pd.crosstab([mtcarsDF.cyl, mtcarsDF.vs], [mtcarsDF.gear, mtcarsDF.am], rownames=['Cylinder','EngineShape'], colnames=['Gear', 'TxType'], dropna=False)
 
