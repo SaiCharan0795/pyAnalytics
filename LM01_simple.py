@@ -34,7 +34,7 @@ y_pred = model.predict(x)  #predict on trained data
 y_pred
 print(y_pred, sep='\t ')
 y_pred2 = model.intercept_ + model.coef_ * x
-print(y_pred2, sep='\t ')
+print(y_pred2, sep='\t ') #doubt
 
 
 #new values
@@ -66,7 +66,7 @@ model.coef_ #b0, b1
 #S4 : predict
 y_pred = model.predict(x)
 y_pred
-y_pred2 = model.intercept_ + np.sum(model.coef_ * x, axis=1)
+y_pred2 = model.intercept_ + np.sum(model.coef_ * x, axis=1) #doubt
 y_pred2
 y_pred - y_pred2
 

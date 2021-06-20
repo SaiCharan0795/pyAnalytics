@@ -98,8 +98,8 @@ DV= df1['mpg'].values
 DV
 IV_train, IV_test, DV_train, DV_test = train_test_split(IV, DV,test_size=0.2, random_state=123)
 IV_train, IV_test, DV_train, DV_test
-#from sklearn import linear_model as lm
-MTmodel2a = linear_model.LinearRegression()
+from sklearn import linear_model as lm
+MTmodel2a = lm.LinearRegression()
 MTmodel2a.fit(IV_train, DV_train)  #putting data to model
 #MTmodel2a.summary()  #no summary in sklearn
 MTmodel2a.intercept_
