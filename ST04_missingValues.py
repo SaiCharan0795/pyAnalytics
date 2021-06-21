@@ -32,15 +32,16 @@ df.describe(include='all')
 df['ST_NUM']   #display all values of column
 df['ST_NUM'].isnull()  # T / F : T - missing data
 df['ST_NUM'].isnull().sum()  #how many missing
-
+df['NUM_BEDROOMS'].isnull().sum()
 #In this column, there’s four missing values.n/a, NA, —, na
 df
 df.isnull().sum()  #how many missing in each column
+df.isnull().sum(axis=1) #row wise missing values
 df['NUM_BEDROOMS'].isnull()
 df['NUM_BEDROOMS']   #2. 5. 8 are missing, but 8 is not showing
 df.NUM_BEDROOMS.value_counts()
 np.mean(df.NUM_BEDROOMS)
-
+df.SQ_FT.value_counts()
 #we can specify at the time of import as which type of values to mark missing
 # Making a list of missing value types
 missing_values = ["n/a", "na", "--"]
@@ -56,6 +57,8 @@ df2.isnull().values.any()
 
 #Total number of missing values
 df2.isnull().sum().sum()
+df2.shape[0]
+df2.isnull().sum().sum()/(df2.shape[0]*df2.shape[1])
 df2.isnull().sum(axis=0)  #column
 df2.isnull().sum(axis=1)  #row
 
