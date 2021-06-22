@@ -18,6 +18,8 @@ data = pd.read_csv('https://raw.githubusercontent.com/DUanalytics/pyAnalytics/ma
 data.head()
 data.shape
 data.columns
+data.Class.value_counts()
+data.groupby('Class').aggregate({'Variance':np.mean})
 #data preparation : X & Y
 X= data.drop('Class', axis=1) #axis=1 -> column
 y= data['Class']
