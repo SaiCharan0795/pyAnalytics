@@ -49,7 +49,8 @@ len(y_test)
 (118+43)/231
 
 
-#prune tree
+#prune tree - make tree shorter by cutting shorter
+
 from sklearn.metrics import classification_report
 
 dtree = DecisionTreeClassifier(criterion='entropy', max_depth=3)# doubt
