@@ -12,14 +12,14 @@ import pandas as pd
 math=[20,50,25,35,40]
 science=[25,45,22,40,35]
 indexNo = ['S1','S2','S3','S4','S5']
-df = pd.DataFrame({'math':math, 'science':science}, index=indexNo)
+df = pd.DataFrame({'math':math, 'science':science},index=indexNo)
 df
 df.plot(kind='scatter', x='math', y='science')
 plt.scatter(df['math'], df['science'], s = 20, c = 'k')
 
 from scipy.cluster.hierarchy import dendrogram , linkage
 #Linkage Matrix
-Z = linkage(df, method = 'ward')
+Z = linkage(df, method = 'ward') #doubt
  
 #plotting dendrogram
 df
@@ -44,4 +44,4 @@ from sklearn.neighbors import DistanceMetric
 dist = DistanceMetric.get_metric('euclidean')
 dist
 df.to_numpy()
-dist.pai
+dist.pairwise(df.to_numpy())
