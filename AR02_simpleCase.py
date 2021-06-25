@@ -2,7 +2,12 @@
 #https://towardsdatascience.com/apriori-association-rule-mining-explanation-and-python-implementation-290b42afdfc6
 #https://efficient-apriori.readthedocs.io/en/latest/
 #simplest example on AR
-
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from pydataset import data
+import seaborn as sns
+#pip install efficient_apriori
 from efficient_apriori import apriori
 teams = [('Paridhi', 'Abir', 'Varun'), ('Paridhi', 'Sai', 'Varun', 'Dhiraj'), ('Varun', 'Bharath', 'Aditya')]
 itemsets, rules = apriori(teams, min_confidence=1)
@@ -26,6 +31,7 @@ rules
 
 
 #from different library
+pip install apyori
 from apyori import apriori
 association_rules = apriori(teams, min_support=0.5, min_confidence=0.6, min_lift=1, min_length=2)
 association_results = list(association_rules)
@@ -35,19 +41,22 @@ print(len(association_results))
 
 
 #mlextend
+pip install mlxtend
 from mlxtend.preprocessing import TransactionEncoder
 from mlxtend.frequent_patterns import apriori
 from mlxtend.frequent_patterns import association_rules
-frequent_itemsets = apriori(teams, min_support= support_threshold, use_colnames = True)
+
+frequent_itemsets = apriori(teams, min_support= support_threshold, use_colnames = True) # this is error wrong format(data not structured properly)
 
 #convert transactions to df
 te = TransactionEncoder()
-te_ary = te.fit(transactions).transform(teams)
+te_ary = te.fit(teams).transform(teams)
 te_ary
 te.columns_
 dfTeams = pd.DataFrame(te_ary, columns=te.columns_)
 dfTeams
 #which student in which team - T/ F
+support_threshold=0.5
 frequent_itemsets = apriori(dfTeams, min_support= support_threshold, use_colnames = True)
 frequent_itemsets
 print(frequent_itemsets) 
