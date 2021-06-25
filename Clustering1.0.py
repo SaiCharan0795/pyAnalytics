@@ -51,3 +51,19 @@ mtcars = data('mtcars')
 mtcarsData = mtcars.copy()
 id(mtcarsData)
 mtcarsData
+
+# 3 clusters from kmeans
+kmeans = KMeans(n_clusters=3).fit(mtcarsData)
+kmeans.n_clusters
+kmeans.inertia_
+centroids = kmeans.cluster_centers_
+print(centroids)
+kmeans.labels_
+mtcarsData.groupby(kmeans.labels_).aggregate({'mpg':[np.mean, 'count']})
+mtcarsData.min(),mtcarsData.max()
+
+#need for scaling : height & weight are in different scales
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+mtcarsScaledData = scaler.fit_transform(mtcarsData)
+mtcarsScaledData[:5] # values between -3 to +3
